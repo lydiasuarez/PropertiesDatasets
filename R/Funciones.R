@@ -1,4 +1,7 @@
-
+#' @import graphics
+#' @import stats
+#'
+NULL
 
 #' Datasets List
 #' @return Returns a vector of strings with the data sets included
