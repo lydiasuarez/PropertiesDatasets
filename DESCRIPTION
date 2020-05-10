@@ -1,6 +1,6 @@
-Package: PropiertiesDatasets
+Package: PropertiesDatasets
 Type: Package
-Title: Propierties of Datasets
+Title: Properties of Datasets
 Version: 0.1.0
 Author: Lydia Suárez <lydia.suarezl@um.es>
 Maintainer: Lydia Suárez <lydia.suarezl@um.es>
