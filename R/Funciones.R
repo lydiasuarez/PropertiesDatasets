@@ -41,7 +41,8 @@ getBrainregionsDataSet <- function(dataset){
 getDataSetInfo <- function(dataset){
   if (dataset == "Zheisel"){
     load("basic_dataframe")
-    return(basic_dataframe)
+    dataset_info <- basic_dataframe
+    return(dataset_info)
   }
   else
     print("There are not information for this dataset")
@@ -55,7 +56,7 @@ getActiveGeneMethod <- function(dataset){
   methods= c("rawexpression", "variationcoefficient")
   if (dataset == "Zheisel"){
     cat("The available methods data for availability are: ","\n")
-    return(unique(basic_dataframe[,"Method"]))
+    return(unique(basic_dataframe[,"Methods"]))
   }
   else
     print("There are not available methods for this dataset")
@@ -65,7 +66,7 @@ getActiveGeneMethod <- function(dataset){
 #' @return Returns the gene ids of genes active in the brain region, cell type, for a given calculus method.
 #' @export
 getActiveGenesInCellType <- function(dataset,brainregion,celltype,method){
-  datos_filtrados <-  datos[datos$Dataset == dataset & datos$BrainRegion == brainregion & datos$CellType == celltype & datos$Method == method,]
+  datos_filtrados <-  datos[datos$Dataset == dataset & datos$BrainRegion == brainregion & datos$CellType == celltype & datos$Methods == method,]
   datos_filtrados <- datos_filtrados[rowSums(is.na(datos_filtrados)) != ncol(datos_filtrados),]
   genes_activos <-grep("TRUE",datos_filtrados[,])
   return(names(datos_filtrados)[genes_activos])
