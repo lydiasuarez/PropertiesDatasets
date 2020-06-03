@@ -40,7 +40,6 @@ getBrainregionsDataSet <- function(dataset){
 #' @export
 getDataSetInfo <- function(dataset){
   if (dataset == "Zheisel"){
-    load(basic_dataframe)
     dataset_info <- basic_dataframe[]
     return(dataset_info)
   }
