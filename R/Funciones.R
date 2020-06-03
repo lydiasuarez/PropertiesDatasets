@@ -40,13 +40,13 @@ getBrainregionsDataSet <- function(dataset){
 #' @export
 getDataSetInfo <- function(dataset){
   if (dataset == "Zheisel"){
-    load("basic_dataframe")
-    dataset_info <- basic_dataframe
+    dataset_info <- basic_dataframe[]
     return(dataset_info)
   }
   else
     print("There are not information for this dataset")
 }
+
 
 
 #' Active Gene Methods
