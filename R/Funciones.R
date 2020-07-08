@@ -61,16 +61,26 @@ getActiveGeneMethod <- function(dataset){
     print("There are not available methods for this dataset")
 }
 
-#' Active Genes In Cell Type
-#' @return Returns the gene ids of genes active in the brain region, cell type, for a given calculus method.
+#' Active Genes by Brain Region And Cell Type
+#' @return Returns the gene ids of active genes in the brain region, cell type, for a given calculus method.
 #' @export
-getActiveGenesInCellType <- function(dataset,brainregion,celltype,method){
+getActiveGenesInBrainRegionInCellType <- function(dataset,brainregion,celltype,method){
   if (dataset == "Zheisel"){
     dataset <- get(paste0("data_ActiveGenes_",method))
     datos_filtrados <-  dataset[dataset$BrainRegion == brainregion & dataset$CellType == celltype,] #Escoger la fila que te solicita
-    genes_activos <-grep("1",datos_filtrados[,])
+    genes_activos <-grep("TRUE",datos_filtrados[,])
     return(names(datos_filtrados)[genes_activos])
   }
 }
 
+#' Active Genes In All Brain Region For Cell Type
+#' @return Returns a matrix with the active/inactive genes in all brain region, for a given cell type and calculus method.
+#' @export
+getActiveGenesInCellType <- function(dataset,celltype,method){
+  if (dataset == "Zheisel"){
+  dataset <- get(paste0("data_ActiveGenes_",method))
+  assign(paste0(celltype,method), dataset[dataset$CellType == celltype,])
+  return(get(paste0(celltype,method)))
+  }
+}
 

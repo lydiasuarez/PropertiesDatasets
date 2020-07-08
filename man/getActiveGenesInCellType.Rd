@@ -2,13 +2,13 @@
 % Please edit documentation in R/Funciones.R
 \name{getActiveGenesInCellType}
 \alias{getActiveGenesInCellType}
-\title{Active Genes In Cell Type}
+\title{Active Genes In All Brain Region For Cell Type}
 \usage{
-getActiveGenesInCellType(dataset, brainregion, celltype, method)
+getActiveGenesInCellType(dataset, celltype, method)
 }
 \value{
-Returns the gene ids of genes active in the brain region, cell type, for a given calculus method.
+Returns a matrix with the active/inactive genes in all brain region, for a given cell type and calculus method.
 }
 \description{
-Active Genes In Cell Type
+Active Genes In All Brain Region For Cell Type
 }
