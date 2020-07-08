@@ -16,7 +16,6 @@ getDataSetList = function(){
 #' @export
 getCellTypesInDataSet <- function(dataset){
   if (dataset == "Zheisel"){
-    cat("Cell types considered for this dataset are: ","\n")
     return(unique(basic_dataframe[,"CellType"]))
   }
   else
@@ -28,7 +27,6 @@ getCellTypesInDataSet <- function(dataset){
 #' @export
 getBrainregionsDataSet <- function(dataset){
   if (dataset == "Zheisel"){
-    cat("Brain regions from", dataset,"are: ","\n")
     return(unique(basic_dataframe[,"BrainRegion"]))
   }
   else
@@ -54,7 +52,6 @@ getDataSetInfo <- function(dataset){
 getActiveGeneMethod <- function(dataset){
   methods= c("rawexpression", "variationcoefficient")
   if (dataset == "Zheisel"){
-    cat("The available methods data for availability are: ","\n")
     return(unique(basic_dataframe[,"Methods"]))
   }
   else
