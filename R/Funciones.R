@@ -63,7 +63,7 @@ getActiveGeneMethod <- function(dataset){
 #' @export
 getActiveGenesInBrainRegionInCellType <- function(dataset,brainregion,celltype,method){
   if (dataset == "Zheisel"){
-    dataset <- get(paste0("data_ActiveGenes_",method))
+    dataset <- get(paste0("ActiveGenes_",method))
     datos_filtrados <-  dataset[dataset$BrainRegion == brainregion & dataset$CellType == celltype,] #Escoger la fila que te solicita
     genes_activos <-grep("TRUE",datos_filtrados[,])
     return(names(datos_filtrados)[genes_activos])
@@ -75,7 +75,7 @@ getActiveGenesInBrainRegionInCellType <- function(dataset,brainregion,celltype,m
 #' @export
 getActiveGenesInCellType <- function(dataset,celltype,method){
   if (dataset == "Zheisel"){
-  dataset <- get(paste0("data_ActiveGenes_",method))
+  dataset <- get(paste0("ActiveGenes_",method))
   assign(paste0(celltype,method), dataset[dataset$CellType == celltype,])
   return(get(paste0(celltype,method)))
   }
