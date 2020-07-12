@@ -59,11 +59,14 @@ getActiveGeneMethod <- function(dataset){
 }
 
 #' Active Genes by Brain Region And Cell Type
-#' @return Returns the gene ids of active genes in the brain region, cell type, for a given calculus method.
+#' @return Returns the gene ids of active genes in the brain region, cell type, for a given calculus method. In rawexpression method, visibility jumps from 0 to 10
 #' @export
-getActiveGenesInBrainRegionInCellType <- function(dataset,brainregion,celltype,method){
+getActiveGenesInBrainRegionInCellType <- function(dataset,brainregion,celltype,method,visibility){
   if (dataset == "Zheisel"){
-    dataset <- get(paste0("ActiveGenes_",method))
+    if (method == "rawexpression"){
+      dataset <- get(paste0("ActiveGenes_",method,"_",visibility))
+    }
+    else {dataset <- get(paste0("ActiveGenes_",method))}
     datos_filtrados <-  dataset[dataset$BrainRegion == brainregion & dataset$CellType == celltype,] #Escoger la fila que te solicita
     genes_activos <-grep("TRUE",datos_filtrados[,])
     return(names(datos_filtrados)[genes_activos])
@@ -71,13 +74,16 @@ getActiveGenesInBrainRegionInCellType <- function(dataset,brainregion,celltype,m
 }
 
 #' Active Genes In All Brain Region For Cell Type
-#' @return Returns a matrix with the active/inactive genes in all brain region, for a given cell type and calculus method.
+#' @return Returns a matrix with the active/inactive genes in all brain region, for a given cell type and calculus method. In rawexpression method, visibility jumps from 0 to 10.
 #' @export
-getActiveGenesInCellType <- function(dataset,celltype,method){
+getActiveGenesInCellType <- function(dataset,celltype,method,visibility){
   if (dataset == "Zheisel"){
-  dataset <- get(paste0("ActiveGenes_",method))
-  assign(paste0(celltype,method), dataset[dataset$CellType == celltype,])
-  return(get(paste0(celltype,method)))
+    if (method == "rawexpression"){
+      dataset <- get(paste0("ActiveGenes_",method,"_",visibility))
+    }
+    else {dataset <- get(paste0("ActiveGenes_",method))}
+    assign(paste0(celltype,method), dataset[dataset$CellType == celltype,])
+    return(get(paste0(celltype,method)))
   }
 }
 

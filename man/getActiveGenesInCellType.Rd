@@ -4,10 +4,10 @@
 \alias{getActiveGenesInCellType}
 \title{Active Genes In All Brain Region For Cell Type}
 \usage{
-getActiveGenesInCellType(dataset, celltype, method)
+getActiveGenesInCellType(dataset, celltype, method, visibility)
 }
 \value{
-Returns a matrix with the active/inactive genes in all brain region, for a given cell type and calculus method.
+Returns a matrix with the active/inactive genes in all brain region, for a given cell type and calculus method. In rawexpression method, visibility jumps from 0 to 10.
 }
 \description{
 Active Genes In All Brain Region For Cell Type
