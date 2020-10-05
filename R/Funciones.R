@@ -15,7 +15,7 @@ getDataSetList = function(){
 #' @return Returns the cell types considered in the data set identified by the string in dataset
 #' @export
 getCellTypesInDataSet <- function(dataset){
-  if (dataset == "Zheisel"){
+  if (dataset == "Zeisel"){
     return(unique(basic_dataframe[,"CellType"]))
   }
   else
@@ -25,8 +25,8 @@ getCellTypesInDataSet <- function(dataset){
 #' Brain Regions in Dataset
 #' @return Returns the brain regions considered in the data set identified by the string in dataset
 #' @export
-getBrainregionsDataSet <- function(dataset){
-  if (dataset == "Zheisel"){
+getBrainRegionsInDataSet <- function(dataset){
+  if (dataset == "Zeisel"){
     return(unique(basic_dataframe[,"BrainRegion"]))
   }
   else
@@ -37,7 +37,7 @@ getBrainregionsDataSet <- function(dataset){
 #' @return Returns a data frame of properties describing the dataset
 #' @export
 getDataSetInfo <- function(dataset){
-  if (dataset == "Zheisel"){
+  if (dataset == "Zeisel"){
     dataset_info <- basic_dataframe[]
     return(dataset_info)
   }
@@ -51,7 +51,7 @@ getDataSetInfo <- function(dataset){
 #' @export
 getActiveGeneMethod <- function(dataset){
   methods= c("rawexpression", "variationcoefficient")
-  if (dataset == "Zheisel"){
+  if (dataset == "Zeisel"){
     return(unique(basic_dataframe[,"Methods"]))
   }
   else
@@ -62,7 +62,7 @@ getActiveGeneMethod <- function(dataset){
 #' @return Returns the gene ids of active genes in the brain region, cell type, for a given calculus method. In rawexpression method, visibility jumps from 0 to 10
 #' @export
 getActiveGenesInBrainRegionInCellType <- function(dataset,brainregion,celltype,method,visibility){
-  if (dataset == "Zheisel"){
+  if (dataset == "Zeisel"){
     if (method == "rawexpression"){
       dataset <- get(paste0("ActiveGenes_",method,"_",visibility))
     }
@@ -74,10 +74,10 @@ getActiveGenesInBrainRegionInCellType <- function(dataset,brainregion,celltype,m
 }
 
 #' Active and Inactive Genes In All Brain Region For Cell Type
-#' @return Returns a matrix with the active/inactive genes in all brain region, for a given cell type and calculus method. In rawexpression method, visibility jumps from 0 to 10.
+#' @return Returns a matrix with the active/inactive genes in all brain region for a cell type, for a given cell type and calculus method. In rawexpression method, visibility jumps from 0 to 10.
 #' @export
-getGenesInCellType <- function(dataset,celltype,method,visibility){
-  if (dataset == "Zheisel"){
+getActiveInactiveGenesInCellType <- function(dataset,celltype,method,visibility){
+  if (dataset == "Zeisel"){
     if (method == "rawexpression"){
       dataset <- get(paste0("ActiveGenes_",method,"_",visibility))
     }
